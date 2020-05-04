@@ -143,3 +143,54 @@ Xcode的画布会自动识别当前代码编辑器中遵循`PreviewProvider`协�
 **步骤4** 切换到实时预览模式下可以直接点击地标列表的任意一行，现在就可以跳转到地标详情页了。
 
 ![list navigation](/tutorials/swiftui_essentials/building_lists_and_navigation.files/swifui-building-list-navigation.mp4?width=50pc)
+
+### 第七节 子视图传入数据
+
+`LandmarkDetail`视图目前还是使用写死的数据进行展示，与`LandmarkRow`视图一样，`LandmarkDetail`视图及它内部的子视图也需要传入`landmark`数据，并使用它来进行实际的展示
+
+从`LandmarkDetail`的子视图(`CircleImage`、`MapView`)开始，需要把它们都改造成为使用传入的数据进行展示，而不是在布局代码中写死数据展示
+
+![pass data](/tutorials/swiftui_essentials/images/swiftui-building-list-pass-data.png?width=15pc)
+
+**步骤1** 在`CircleImage.swift`文件中，添加一个存储属性，命名为`image`。这是一种在构建SwiftUI视图中很常用的模式，常常会包裹或封装一些属性修改器。
+
+![circle image data](/tutorials/swiftui_essentials/images/swiftui-building-list-circle-image-data.png?width=20pc)
+
+**步骤2** 更新`CirleImage`的预览结构体，并传入`Turtle Rock`这个图片进行预览
+
+![circle image preview](/tutorials/swiftui_essentials/images/swiftui-building-list-circle-image-preview.png?width=20pc)
+
+**步骤3** 在`MapView.swift`中添加一个`coordinate`属性，并使用这个属性来替换写死的经纬度坐标
+
+![map view data](/tutorials/swiftui_essentials/images/swiftui-building-list-map-view-data.png?width=20pc)
+
+**步骤4** 更新`MapView`的预览结构体，并传入每一个地标的经纬度数据
+
+![map view preview](/tutorials/swiftui_essentials/images/swiftui-building-list-map-view-preview.png?width=20pc)
+
+**步骤5** 在`LandmarkDetail.swift`中添加`landmark`属性。
+
+**步骤6** 更新`LandmarkDetail`预览结构体，并传入第一个地标的数据
+
+**步骤7** 把对应子视图的数据传入
+
+![landmark detail](/tutorials/swiftui_essentials/images/swiftui_building-list-landmark-detail-data.png?width=20pc)
+
+**步骤8** 最后调用`navigationBarTitle(_:displayMode:)`修改器为地标详情页展示时在导航条上设置一个标题
+
+![landmark detail preview](/tutorials/swiftui_essentials/images/swiftui-building-list-landmark-detail-preview.png?width=20pc)
+
+**步骤9** 在`SceneDelegate.swift`中把应用的根视图替换为`LandmarkList`。应用在模拟器中独立启动时使用`SceneDelegate`的根视图做为第一个展示的视图
+
+![scene delegate root view](/tutorials/swiftui_essentials/images/swiftui-buidling-list-sencedelegate-rootview.png?width=50pc)
+
+**步骤10** 在`LandmarkList.swift`中，传入当前行的地标数据到地标详情页`LandmarkDetail`
+
+![landmark list data](/tutorials/swiftui_essentials/images/swiftui-building-list-landmark-list-data.png?width=50pc)
+
+**步骤11** 切换到实时预览模式下去查看从地标列表页对应的行跳转到对应地标详情页是否正常
+
+![landmark list preview](/tutorials/swiftui_essentials/building_lists_and_navigation.files/swiftui-building-list-landmark-list-preview.mp4?width=25pc)
+
+### 第八节 动态生成预览视图
+
