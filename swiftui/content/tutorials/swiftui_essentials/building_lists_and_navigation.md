@@ -81,3 +81,65 @@ Xcode的画布会自动识别当前代码编辑器中遵循`PreviewProvider`协�
 **步骤4** 为了简化代码，可以把`previewLayout(_:)`这个修改器应用到外层的`Group`上，`Group`的每一个子视图会继承自己所处环境的配置。对`preivew provider`的修改只会影响预览画布的表现，对实际的应用不会产生影响。
 
 ![preview group coniguration](/tutorials/swiftui_essentials/images/swiftui-building-list-preview-layout-group-configuration.png?width=40pc)
+
+### 第四节 创建地标列表
+
+使用SwiftUI列表类型可以展示平台相关的列表视图。列表的元素可以是静态的，类似于栈内部的子视图，也可以是动态生成的视图，也可以混合动态和静态的视图。
+
+![landmark list](/tutorials/swiftui_essentials/images/swiftui-building-list-landmark-list.png?width=30pc)
+
+**步骤1** 创建SwiftUI视图，命名为`LandmarkList.swift`
+
+**步骤2** 用`List`替换默认创建的`Text`，并将前两个`LandmarkRow`实例做为列表的子元素，预览视图中会以列表的形式展示出两个地标
+
+![landmark list file create](/tutorials/swiftui_essentials/images/swiftui-building-list-landmark-list-file.png?width=20pc)
+
+![landmark list landmark list tow rows](/tutorials/swiftui_essentials/images/swiftui-building-list-landmark-list-two-rows.png?width=50pc)
+
+### 第五节 创建动态列表
+
+除了单独列出列表中的每个元素外，列表还可以从一个集合中动态的生成。
+
+![landmark list dynamic](/tutorials/swiftui_essentials/images/swiftui-building-list-landmark-list-dynamic.png?width=20pc)
+
+创建列表时可以传入一个集合数据和一个闭包，闭包会针对每一个数据元素返回一个视图，这个视图就是列表的行视图。
+
+**步骤1** 从列表中移除两个静态指定的行视图，给列表初始化器传入`landmarkData`数据，列表要配合可辨别的数据类型使用。想让数据变成可辨别的数据类型有两种方法:
+
+1. 传入一个`keypath`指定数据中哪一个字段用来唯一标识这个数据元素。
+
+2. 让数据遵循`Identifiable`协议
+
+**步骤2** 在闭包中返回一个`LandmarkRow`视图，`List`初始化器中指定数据集合`landmarkData`和唯一标识符**keypath:**`\.id`，这样列表就会动态生成，如下图所示
+
+![keypath identifier list data](/tutorials/swiftui_essentials/images/swiftui-building-list-landmark-list-keypath-data.png?width=50pc)
+
+**步骤3** 切换到文件`Landmark.swfit`，声明`Landmark`类型遵循`Identifiable`协议，因为`Landmark`类型已经定义了`id`属性，正好满足`Identifiable`协议，所以不需要添加其它代码
+
+![identifiable data](/tutorials/swiftui_essentials/images/swiftui-building-list-landmark-data-identifiable.png?width=50pc)
+
+**步骤4** 现在切换回文件`LandmarkList.swift`，移除keypath`\.id`，因为`landmarkData`数据集合的元素已经遵循了`Identifiable`协议，所以在列表初始化器中可以直接使用，不需要手动标明数据的唯一标识符了
+
+![identifiable list](/tutorials/swiftui_essentials/images/swiftui-building-list-landmark-list-identifiable-data.png?width=50pc)
+
+### 第六节 设置从列表页到详情页的页面导航
+
+地标列表可以正常渲染展示，但是列表的元素点击后没有反应，跳转不到地标详情页。现在就要给列表添加导航能力，把列表视图嵌套到`NavigationView`视图中，然后把列表的每一个行视图嵌套进`NavigationLink`视图中，就可以建立起从地标列表视图到地标详情页的跳转。
+
+![landmark list to detail](/tutorials/swiftui_essentials/images/swiftui-building-list-landmark-list-to-detail.png?width=20pc)
+
+**步骤1** 把动态生成的列表视图嵌套进一个`NavigationView`视图中
+
+![embed in navigation view](/tutorials/swiftui_essentials/images/swifui-building-list-embed-in-navigation-view.png?width=20pc)
+
+**步骤2** 调用`navigationBarTitle(_:)`修改器设置地标列表显示时的导航条标题
+
+![landmark list navigation view](/tutorials/swiftui_essentials/images/swiftui-building-list-navigation-view-title.png?width=50pc)
+
+**步骤3** 在列表的闭包中，将每一个行元素包裹在`NavigationLink`中返回，并指定`LandmarkDetail`视图为目标视图
+
+![navigation link](/tutorials/swiftui_essentials/images/swiftui-building-list-navigationlink.png?width=30pc)
+
+**步骤4** 切换到实时预览模式下可以直接点击地标列表的任意一行，现在就可以跳转到地标详情页了。
+
+![list navigation](/tutorials/swiftui_essentials/building_lists_and_navigation.files/swifui-building-list-navigation.mp4?width=50pc)
