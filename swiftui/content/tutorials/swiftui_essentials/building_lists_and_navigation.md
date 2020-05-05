@@ -194,3 +194,20 @@ Xcode的画布会自动识别当前代码编辑器中遵循`PreviewProvider`协�
 
 ### 第八节 动态生成预览视图
 
+![dynamic preivew](/tutorials/swiftui_essentials/images/swiftui-building-list-preview-dynamic.png?width=20pc)
+
+接下来要在不同尺寸设备上展示不同的预览视图，默认情况下，预览视图会选择当前`Scheme`选中的设备尺寸进行渲染，可以使用`previewDevice(_:)`修改器来改变预览视图的设备
+
+**步骤1** 改变当前预览列表，让它渲染在`iPhone SE`设备上。可以使用`Xcode Scheme菜单`上的设备名称来指定渲染设备。
+
+![iPhone SE Preview](/tutorials/swiftui_essentials/images/swifui-building-list-preview-on-iphonese.png?width=50pc)
+
+**步骤2** 在列表的预览视图中，还可以把`LandmarkList`嵌套进入`ForEach`实例中，使用设备数组名作为数据。`ForEach`运算作用在集合类型的数据上，就和列表使用集合类型数据一样，可以在子视图使用的任何场景下使用`ForEach`，例如：`stack`、`list`、`group`等。当元素数据是简单值类型时(例如字符串类型)，可以使用`\.self`作为`keypath`去标识
+
+![preiview multiple device](/tutorials/swiftui_essentials/images/swiftui-building-list-preivew-multiple-device.png?width=50pc)
+
+**步骤3** 使用`previewDisplayName(_:)`修改器可以给预览视图添加设备标签
+
+**步骤4** 可以在画布上多设置几个设备进行预览，比较不同设备下视图的展示情况
+
+![preivew multiple devices](/tutorials/swiftui_essentials/images/swiftui-building-list-preview-muldevices.png?width=50pc)
