@@ -211,3 +211,30 @@ Xcode的画布会自动识别当前代码编辑器中遵循`PreviewProvider`协�
 **步骤4** 可以在画布上多设置几个设备进行预览，比较不同设备下视图的展示情况
 
 ![preivew multiple devices](/tutorials/swiftui_essentials/images/swiftui-building-list-preview-muldevices.png?width=50pc)
+
+### 检查是否理解
+
+**问题1** 除了`List`外，下面哪种类型可以从集合数据中展示动态列表视图
+
+- [ ] `Group`
+- [X] `ForEach`
+- [ ] `UITableView`
+
+**问题2** 可以从遵循了`Identifiable`协议的集合数据创建列表视图。但如果集合数据不遵循`Identifiable`协议，还有什么办法可以创建列表视图？
+
+- [ ] 在集合数据上调用`map(_:)`方法
+- [ ] 在集合数据上调用`sorted(by:)`方法
+- [X] 给`List(_:id:)`类型传入集合数据的同时，使用`keypath`指定一个唯一标识符字段
+
+**问题3** 使用什么类型才能让列表的行实现点击跳转到其它视图页面？
+
+- [X] `NavigationLink`
+- [ ] `UITableViewDelegate`
+- [ ] `NavigationView`
+
+**问题4** 下面哪种方式不是用来设置预览设备的？
+
+- [ ] 改变活动`scheme`中选中的模拟器
+- [X] 在画面设置中设置一个不同的预览设备
+- [ ] 使用`previewDevice(_:)`指定一个或多个预览设备
+- [ ] 连接开发机并点击设备预览按钮
