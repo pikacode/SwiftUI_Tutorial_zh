@@ -65,3 +65,9 @@ name = "<i class='fab fa-sketch'></i> Font Awesome免费"
 identifier = "fontawesome"
 url = "https://fontawesome.com/icons?d=gallery&m=free"
 weight = 7
+
+[[Languages.zh.menu.shortcuts]]
+name = "<i class='fas fa-book-open'></i> Swift 官网"
+identifier = "swift"
+url = "https://swift.org"
+weight = 8
