@@ -1,7 +1,6 @@
 .DS_Store
 swiftui/public
 swiftui/resources
-swiftui/themes/
 *webarchive
 
 # Xcode
