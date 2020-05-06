@@ -44,4 +44,65 @@ weight: 3
 
 ### 第三节 添加控件来切换状态
 
+为了让用户控制地标列表的过滤器，需要添加一个可以修改`showFavoritesOnly`值的控件，传递一个绑定关系给`toggle`控件可以实现
+
+一个绑定关系(`binding`)是对可变状态的引用。当用户点击`toggle`控件，从开到关或从关到开，`toggle`控件会通过绑定关系对应的更新视图的状态
+
+![toggle state](/tutorials/swiftui_essentials/images/swiftui-handle-user-input-toggle-state.png?width=20pc)
+
+**步骤1** 创建一个嵌套的`ForEach`组来把地标数据转换成地标行视图。在一个列表中组合静态和动态视图，或者组合两个甚至多个不同的动态视图组，使用`ForEach`类型动态生成而不是给列表传入数据集合生成列表视图
+
+**步骤2** 添加一个`Toggle`视图作为列表的每一个子视图，传入一个`showFavoritesOnly`的绑定关系。使用`$`前缀来获得一个状态变量或属性的绑定关系
+
+**步骤3** 实时预览模式下，点击`Toggle`控件来验证过滤器的功能
+
+![toggle binding](/tutorials/swiftui_essentials/images/swiftui-handle-user-input-toggle-binding.png?width=50pc)
+
+![live preview](/tutorials/swiftui_essentials/handling_user_input.files/toggle-state-live-preview.mp4?width=20pc)
+
+### 第四节 使用可观察对象来存储数据
+
+要实现用户标记哪个地标为自己喜爱的地标这个功能，需要使用可观察对象(`observalble object`)存放地标数据
+
+可观察对象是一种可以绑定到具体SwifUI视图环境中的数据对象。`SwiftUI`可以察觉它影响视图展示的任何变化，并在这种变化发生后及时更新对应视图的展示内容
+
+![observable](/tutorials/swiftui_essentials/images/swiftui-handle-user-input-observable.png?width=10pc)
+
+**步骤1** 创建一个名为`UserData.swift`的文件
+
+**步骤2** 声明一个遵循`ObservableObject`协议的新数据模型，`ObservableObject`协议来自响应式框架`Combine`。SwiftUI可以订阅可观察对象，并在数据发生改变时更新视图的显示内容
+
+**步骤3** 添加存储属性`showFavoritesOnly`和`landmarks`，并赋予初始值。可观察对象需要对外公布内部数据的任何改动，因此订阅此可观察对象的订阅者就可以获得对应的数据改动信息
+
+**步骤4** 给新建的数据模型的每一个属性添加`@Published`属性修饰词
+
+![combine](/tutorials/swiftui_essentials/images/swiftui-handle-user-input-combine.png?width=40pc)
+
+### 第五节 视图中适配数据模型对象
+
+已经创建了`UserData`可观察对象，现在要改造视图，让它使用这个新的数据模型来存储视图内容数据
+
+![model](/tutorials/swiftui_essentials/images/swiftui-handle-user-input-model.png?width=30pc)
+
+**步骤1** 在`LandmarkList.swift`文件中，使用`@EnvironmentObject`修饰的`userData`属性来替换原来的`showFavoritesOnly`状态属性，并对预览视图调用`environmentObject(_:)`修改器。只要`environmentObject(_:)`修改器应用在视图的父视图上，`userData`就能够自动获取它的值。
+
+**步骤2** 替换原来使用`showFavoritesOnly`状态属性的地方，改为使用`userData`中的对应属性。与`@State`修饰的属性一样，也可以使用`$`前缀访问`userData`对象的成员绑定引用
+
+**步骤3** 创建`ForEach`实例时使用`userData.landmarks`做为数据源
+
+![envrionment object](/tutorials/swiftui_essentials/images/swiftui-handle-user-input-list-environment.png?width=50pc)
+
+**步骤4** 在`SceneDelegate.swift`中，对`LandmarkList`视图调用`environmentObject`修改器，这样可以把`UserData`的数据对象绑定到`LandmarkList`视图的环境变量中，子视图可以获得父视图环境中的变量。此时如果在模拟器或者真机上运行应用，也可以正常展示视图内容
+
+![scene delegate](/tutorials/swiftui_essentials/images/swiftui-handle-user-input-scene-delegate-environment.png?width=40pc)
+
+**步骤5** 更新`LandmarkDetail`视图，让它从父视图的环境变量中取要展示的数据。之后在更新地标的用户喜爱状态时，会用到`landmarkIndex`这个变量
+
+![landmark detail environment](/tutorials/swiftui_essentials/images/swiftui-handle-user-input-landmark-detail-environment.png?width=40pc)
+
+**步骤6** 切换到`LandmarkList.swift`文件，并打开实时预览视图去验证所添加的功能是否正常工作
+
+![landmark list environment](/tutorials/swiftui_essentials/handling_user_input.files/landmarklist-environment.mp4?width=20pc)
+
+### 第六节 为每一个地标创建一个喜爱按钮
 
