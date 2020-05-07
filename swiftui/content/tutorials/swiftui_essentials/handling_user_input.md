@@ -114,8 +114,11 @@ weight: 3
 
 **步骤2** 在地标名称的`Text`控件旁边添加一个新的按钮控件。使用`if-else`条件语句设置不同的图片显示状态表示这个地标是否被用户标记为喜欢。在`Button`的动作闭包中，使用了`landmarkIndex`去修改`userData`中对应地标的数据。
 
+![favorite star button](/tutorials/swiftui_essentials/images/swiftui-handle-user-input-favorite-star-button.png?width=50pc)
+
 **步骤3** 切换到`landmarkList.swift`，并开启实时预览模式。当从列表页导航进入详情页后，点击喜欢按钮，喜欢的状态会在返回列表页后与列表中对应的地标喜欢状态保持一致，因为列表页和详情页的地标数据使用的是同一份，所以可以在不同页面间保持状态同步。
 
+![star button completed](/tutorials/swiftui_essentials/handling_user_input.files/swiftui-handle-user-input-start-completed.mp4?width=20pc)
 
 ### 检查是否理解
 
