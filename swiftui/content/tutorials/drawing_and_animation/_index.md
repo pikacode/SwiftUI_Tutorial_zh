@@ -8,7 +8,6 @@ weight: 20
 
 ![drawing and animation](/tutorials/drawing_and_animation/images/drawing_and_animation.png?width=20pc)
 
-
 ### 包含章节
 
-{{% children description="true" style="li" /%}}
+{{% children style="li" /%}}

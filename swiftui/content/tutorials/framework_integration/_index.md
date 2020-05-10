@@ -10,4 +10,4 @@ weight: 40
 
 ### 包含章节
 
-{{% children description="true" style="li" /%}}
+{{% children style="li" /%}}
