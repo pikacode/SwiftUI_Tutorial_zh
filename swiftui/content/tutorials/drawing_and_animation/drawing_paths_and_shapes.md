@@ -80,11 +80,27 @@ weight: 1
 
 **步骤1** 把之前的徽章视图形状抽出来单独形成一个`BadgeBackground`视图，并生成一个新的视图文件`BadgeBackground.swift`
 
-**步骤2** 
-**步骤3** 
-**步骤4** 
-**步骤5** 
-**步骤6** 
+![badge background](/tutorials/drawing_and_animation/images/swiftui-drawing-animation-badgebackground.png?width=50pc)
+
+**步骤2** 把`BadgeBackground`放在`Badge`的`body`属性中。
+
+![refactor badge](/tutorials/drawing_and_animation/images/swiftui-drawing-animation-badge-refactor-background.png?width=50pc)
+
+**步骤3** 创建名为`BadgeSymbol`的自定义视图，这个视图是一个山峰的形状，把这个形状复制多次并按一定角度旋转多次拼成一个徽章的图案
+
+![badge symbol](/tutorials/drawing_and_animation/images/swiftui-drawing-animation-badgeSymbol.png)
+
+**步骤4** 使用`path` API来绘制徽章符号的上半部分，试着调节`spacing`、`topWidth`、`topHeight`的系数，观察这些系数是怎么影响图形绘制的结果的
+
+![badge symbol top](/tutorials/drawing_and_animation/images/swiftui-drawing-animation-badge-symbol-top.png?width=50pc)
+
+**步骤5** 绘制徽章图案的下半部分，使用`move(to:)`把绘图光标移到另一个图形绘制的起点，绘制新的形状
+
+![badge symbol bottom](/tutorials/drawing_and_animation/images/swiftui-drawing-animation-badge-symbol-bottom.png?width=50pc)
+
+**步骤6** 用紫色填充徽章符号
+
+![badge symbol fill](/tutorials/drawing_and_animation/images/swiftui-drawing-animation-badge-symbol-fill.png?width=50pc)
 
 ### 第四节 组合徽章的前景符号和背景形状
 
