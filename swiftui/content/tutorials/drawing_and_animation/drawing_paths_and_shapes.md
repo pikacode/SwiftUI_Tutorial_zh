@@ -108,13 +108,42 @@ weight: 1
 
 ![badge combine](/tutorials/drawing_and_animation/images/swiftui-drawing-animation-badge-combine.png?width=20pc)
 
-**步骤1** 
-**步骤2** 
-**步骤3** 
-**步骤4** 
+**步骤1** 创建`RotatedBadgeSymbol`视图封装旋转徽章符号，调整旋转的角度，并在预览视图中查看效果
+
+![badge symbol rotate 4](/tutorials/drawing_and_animation/images/swiftui-drawing-animation-rotate-badge-5.png?width=50pc)
+
+**步骤2**  在`Badge.swift`中，使用`ZStack`把徽章图标放在徽章背景层上面。此时会发现，徽章符号的尺寸相比徽章背景大了许多，这不符合最初设计的预期
+
+![badge symbols](/tutorials/drawing_and_animation/images/swiftui-drawing-animation-badge-symbols.png?width=50pc)
+
+**步骤3** 缩放符号尺寸到合适的大小
+
+![badge geometry scale](/tutorials/drawing_and_animation/images/swiftui-drawing-animation-badge-geometry-scale.png?width=50pc)
+
+**步骤4** 使用`ForEach`复制多个徽章图标，按360度周解均分，每一个徽章符号都比前一个多旋转45度，这种就会形成一个类似太阳和徽章图标
+
+![badge symbol completed](/tutorials/drawing_and_animation/images/swiftui-drawing-animation-badge-symbol-completed.png?width=50pc)
 
 ### 检查是否理解
 
-**问题1** 
-**问题2** 
-**问题3** 
+**问题1** `GeometryReader`的作用是什么?
+
+- [ ] `GeometryReader`可以把父视图分割成网格，便于在屏幕上布局视图
+- [X] `GeometryReader`可以动态的绘制、定位、缩放视图，不需要写死它们的尺寸。这样可以在不同尺寸的屏幕上复用已经写好的视图
+- [ ] 使用`GeometryReader`可以自动识别应用视图层级上形状的类型和位置，例如: `(圆)Circle`
+
+**问题2** 下面代码段布局后是哪一个图？
+
+![problem 2](/tutorials/drawing_and_animation/images/swiftui-drawing-animation-problem2.png?width=30pc)
+
+- [X] ![answer 1](/tutorials/drawing_and_animation/images/swiftui-drawing-animation-problem2-answer1.png?width=30pc&classes=border)
+- [ ] ![answer 2](/tutorials/drawing_and_animation/images/swiftui-drawing-animation-problem2-answer2.png?width=30pc&classes=border)
+- [ ] ![answer 3](/tutorials/drawing_and_animation/images/swiftui-drawing-animation-problem2-answer3.png?width=30pc&classes=border)
+
+**问题3** 下面代码绘制出哪个图？
+
+![problem 3](/tutorials/drawing_and_animation/images/swiftui-drawing-animation-problem3.png?width=30pc)
+
+- [ ] ![answer 1](/tutorials/drawing_and_animation/images/swiftui-drawing-animation-problem3-answer1.png?width=30pc&classes=border)
+- [ ] ![answer 2](/tutorials/drawing_and_animation/images/swiftui-drawing-animation-problem3-answer2.png?width=30pc&classes=border)
+- [X] ![answer 3](/tutorials/drawing_and_animation/images/swiftui-drawing-animation-problem3-answer3.png?width=30pc&classes=border)
