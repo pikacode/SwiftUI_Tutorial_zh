@@ -88,9 +88,9 @@ weight: 1
 
 **步骤3** 创建名为`BadgeSymbol`的自定义视图，这个视图是一个山峰的形状，把这个形状复制多次并按一定角度旋转多次拼成一个徽章的图案
 
-![badge symbol](/tutorials/drawing_and_animation/images/swiftui-drawing-animation-badgeSymbol.png)
+![badge symbol](/tutorials/drawing_and_animation/images/swiftui-drawing-animation-badge-symbol-create.png?width=50pc)
 
-**步骤4** 使用`path` API来绘制徽章符号的上半部分，试着调节`spacing`、`topWidth`、`topHeight`的系数，观察这些系数是怎么影响图形绘制的结果的
+**步骤4** 使用`path`API来绘制徽章符号的上半部分，试着调节`spacing`、`topWidth`、`topHeight`的系数，观察这些系数是怎么影响图形绘制的结果的
 
 ![badge symbol top](/tutorials/drawing_and_animation/images/swiftui-drawing-animation-badge-symbol-top.png?width=50pc)
 
