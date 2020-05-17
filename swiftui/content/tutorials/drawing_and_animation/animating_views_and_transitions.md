@@ -92,16 +92,52 @@ weight: 2
 
 ![custom move and fade slide scale](/tutorials/drawing_and_animation/animating_views_and_transitions.files/custom-move-and-fade-slide-scale.mp4?width=50pc)
 
-### 第四节 
+### 第四节 组合复杂的动画效果
 
-**步骤1** 
-**步骤2** 
-**步骤3** 
-**步骤4** 
+点击图表下面的三个按钮，会在三个不同的数据集间进行切换并展示。本节中会使用组合动画，让图表在不同数据集间切换时的转换动画流畅自然。
+
+![combine animation](/tutorials/drawing_and_animation/images/swiftui-animation-transition-combine-animation.png?width=20pc)
+
+**步骤1** 把`showDetail`的默认值改为`true`，并把`HikeView`的预览模式视图固定在画布上。这样可以在编辑其它文件时，依然看到动画效果的变化。
+
+![pin canvas](/tutorials/drawing_and_animation/images/swiftui-animation-transition-pin-canvas.png?width=50pc)
+
+**步骤2** 在`HikeGraph.swift`中定义了一个新的`波动`动画，并把它与`滑入/滑出`动画一起应用到图表视图上。
+
+![hike graph ripple](/tutorials/drawing_and_animation/images/swiftui-animation-transition-hike-graph-ripple.png?width=50pc)
+
+**步骤3** 把动画切换为弹簧动画(`spring`)，并设置弹簧阻尼系数为`0.5`，动画过程中产生了逐渐回弹效果
+
+![spring animation](/tutorials/drawing_and_animation/animating_views_and_transitions.files/hike-graph-transition-spring-animation.mp4?width=50pc)
+
+**步骤4** 加速弹簧动画的执行速度，缩短切换图表的时间
+
+![spring animation speed](/tutorials/drawing_and_animation/animating_views_and_transitions.files/spring-animation-speed.mp4?width=50pc)
+
+**步骤5** 以当条形在图表中的位置为参数，添加延迟效果，图表中的每个条形会顺序动起来
+
+![spring animation index based delay](/tutorials/drawing_and_animation/animating_views_and_transitions.files/spring-animation-delay-index-based.mp4?width=50pc)
+
+**步骤6** 观察一下自定义`波动(rippling)`效果是怎么作用在视图转场中的
 
 ### 检查是否理解
 
-**问题1** 
-**问题2** 
-**问题3** 
-**问题4** 
+**问题1** 怎样从一串动画效果调用中，去掉其中的一种动画效果。以下面的代码为例，怎样去掉旋转动画
+
+![problem 1](/tutorials/drawing_and_animation/images/swiftui-animation-transition-problem1.png?width=20pc)
+
+- [X] ![a1](/tutorials/drawing_and_animation/images/swiftui-animation-transition-problem1-1.png?width=30pc&classes=border)
+- [ ] ![a2](/tutorials/drawing_and_animation/images/swiftui-animation-transition-problem1-2.png?width=30pc&classes=border)
+- [ ] ![a3](/tutorials/drawing_and_animation/images/swiftui-animation-transition-problem1-3.png?width=30pc&classes=border)
+
+**问题2** 当你开发动画的过程上，为什么要把预览视图固定在画布上？
+
+- [ ] 为了固定动画过程中的当前帧
+- [ ] 为了在多个设备配置开发中预览动画效果
+- [X] 为了在切换到其它不同文件时，固定显示当前视图的预览
+
+**问题3** 在视图状态改变时，如何快速测试一个动画在被中断时的表现
+
+- [ ] 在包含`animation(_:)`修改器的代码行上打一个断点，然后单步按动画帧进行测试
+- [X] 调整动画的持续时长，让动画在足够长的时间内完成，这样就可以调整动画的细节
+- [ ] 重复的调用`sleep(100)`来减慢动画的执行
