@@ -70,12 +70,27 @@ weight: 2
 
 **步骤4** 读下一节之前，把动画时长参数(`.easeInOut(duration: 4)`)去掉，让动画不再缓慢进行。
 
-### 第三节
+### 第三节 定制视图转场动画
 
-**步骤1** 
-**步骤2** 
-**步骤3** 
-**步骤4** 
+默值情况下，视图离屏和入屏时的动画效果是`渐隐/渐现`， 这个默认的转场效果可以使用`transition(_:)`修改器进行定制。
+
+![transitions](/tutorials/drawing_and_animation/animating_views_and_transitions.files/customize-view-transitions.mp4?width=20pc)
+
+**步骤1** 给`HikeView`视图添加`transition(_:)`修改器，并定制转场参数为`.slide`，转场动画为`滑入/滑出`
+
+![transition slide](/tutorials/drawing_and_animation/animating_views_and_transitions.files/transition-slide.mp4?width=40pc)
+
+**步骤2** 可以把`滑入/滑出`这种转场动画封装起来，方便其它视图复用同样的转场效果
+
+![custom transition effect](/tutorials/drawing_and_animation/images/swiftui-animation-transition-custom-transition.png?width=30pc)
+
+**步骤3** 在`moveAndFade`转场效果的定义中使用`move(edge:)`，让滑入/滑出从屏幕的同一边进行
+
+![move and fade custom](/tutorials/drawing_and_animation/animating_views_and_transitions.files/custom-move-and-fade.mp4?width=50pc)
+
+**步骤4** 使用`asymmetric(insertion:removal:)`修改器来定制视图显示/消失时的转场动画效果
+
+![custom move and fade slide scale](/tutorials/drawing_and_animation/animating_views_and_transitions.files/custom-move-and-fade-slide-scale.mp4?width=50pc)
 
 ### 第四节 
 
