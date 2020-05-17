@@ -48,12 +48,27 @@ weight: 2
 
 ![rotate button resume](/tutorials/drawing_and_animation/images/swiftui-animation-transition-rotate-button-resume.png?width=30pc)
 
-### 第二节
+### 第二节 把视图的状态改态转化成动画效果
 
-**步骤1** 
-**步骤2** 
-**步骤3** 
-**步骤4** 
+已经学会了给单个视图添加动画的方法，现在可以学习怎么在视图的状态发生改变时添加动画效果。当用户点击按钮时会切换`showDetail`状态的值，在视图变化过程中添加动画效果。
+
+![state change](/tutorials/drawing_and_animation/images/swiftui-animation-transtion-state-change.png?width=10pc)
+
+**步骤1** 把`showDetail.toggle()`包裹在`withAnimation`函数调用块中。`showDetail`的改变影响了视图`HikeDetail`和详情切换按钮，在显示/隐藏详情的过程中都有了过滤动画效果。
+
+![with_animation block](/tutorials/drawing_and_animation/animating_views_and_transitions.files/with-animation-block.mp4?width=50pc)
+
+放慢动画速度，可以观察`SwiftUI`动画在被中断下是怎么运作的
+
+**步骤2** 给`withAnimation`传入一个`时长4秒`的基本动画参数`.easeInOut(duration:4)`，可以指定动画过程时长，给`withAnimation`传入的动画参数与`.animation(_:)`修改器可用参数一致。
+
+![with animation duration block](/tutorials/drawing_and_animation/animating_views_and_transitions.files/with-animation-duration.mp4?width=50pc)
+
+**步骤3** 在动画过程进行中点击按钮切换视图状态，查看对应的动画被中断时的效果
+
+![with animation interrupt](/tutorials/drawing_and_animation/animating_views_and_transitions.files/with-animation-interrupt.mp4?width=20pc)
+
+**步骤4** 读下一节之前，把动画时长参数(`.easeInOut(duration: 4)`)去掉，让动画不再缓慢进行。
 
 ### 第三节
 
